@@ -113,31 +113,31 @@ export default function LandingPage() {
 
               {/* Centered CTA Button - Desktop */}
               <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
-                <button className={`relative font-bold text-gray-800 bg-[#ff999a] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#9ebbff] hover:scale-105 ${
+                <button className={`relative font-bold text-white bg-[#EB9190] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#8CD1F0] hover:scale-105 ${
                   isScrolled ? 'px-7 py-2.5 text-base' : 'px-10 py-4 text-lg'
                 }`}>
                   <span className="relative z-10">Create a Game</span>
                   {/* Snake border animation */}
                   <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#ff999a] via-[#9ebbff] via-[#f1bbff] to-[#9ebbff] animate-spin-slow"></div>
-                    <div className="absolute inset-[2px] rounded-full bg-[#ff999a]"></div>
+                    <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#EB9190] via-[#8CD1F0] via-[#5B2E48] to-[#8CD1F0] animate-spin-slow"></div>
+                    <div className="absolute inset-[2px] rounded-full bg-[#EB9190]"></div>
                   </div>
                 </button>
               </div>
 
               {/* Navigation - Desktop */}
               <nav className="hidden md:flex items-center space-x-10">
-                <Link href="#about" className={`text-gray-700 hover:text-[#9ebbff] transition-all duration-300 font-semibold hover:scale-105 ${
+                <Link href="/about" className={`text-gray-700 hover:text-[#8CD1F0] transition-all duration-300 font-semibold hover:scale-105 ${
                   isScrolled ? 'text-base' : 'text-lg'
                 }`}>
                   About
                 </Link>
-                <Link href="#how-it-works" className={`text-gray-700 hover:text-[#ff999a] transition-all duration-300 font-semibold hover:scale-105 ${
+                <Link href="#how-it-works" className={`text-gray-700 hover:text-[#EB9190] transition-all duration-300 font-semibold hover:scale-105 ${
                   isScrolled ? 'text-base' : 'text-lg'
                 }`}>
                   How It Works
                 </Link>
-                <Link href="#contact" className={`text-gray-700 hover:text-[#9ebbff] transition-all duration-300 font-semibold hover:scale-105 ${
+                <Link href="/contact" className={`text-gray-700 hover:text-[#8CD1F0] transition-all duration-300 font-semibold hover:scale-105 ${
                   isScrolled ? 'text-base' : 'text-lg'
                 }`}>
                   Contact
@@ -163,34 +163,34 @@ export default function LandingPage() {
                 <div className="px-6 py-8 space-y-6">
                   {/* Mobile CTA Button */}
                   <div className="flex justify-center mb-8">
-                    <button className="relative px-10 py-4 font-bold text-gray-800 bg-[#ff999a] rounded-full overflow-hidden group transition-all duration-300 hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#9ebbff] text-lg">
+                    <button className="relative px-10 py-4 font-bold text-white bg-[#EB9190] rounded-full overflow-hidden group transition-all duration-300 hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#8CD1F0] text-lg">
                       <span className="relative z-10">Create a Game</span>
-                      <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#ff999a] via-[#9ebbff] via-[#f1bbff] to-[#9ebbff] animate-spin-slow"></div>
-                        <div className="absolute inset-[2px] rounded-full bg-[#ff999a]"></div>
-                      </div>
+                                              <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#EB9190] via-[#8CD1F0] via-[#5B2E48] to-[#8CD1F0] animate-spin-slow"></div>
+                          <div className="absolute inset-[2px] rounded-full bg-[#EB9190]"></div>
+                        </div>
                     </button>
                   </div>
                   
                   {/* Mobile Navigation Links */}
                   <div className="flex flex-col space-y-6 text-center">
                     <Link 
-                      href="#about" 
-                      className="text-gray-700 hover:text-[#9ebbff] transition-colors font-semibold py-3 text-xl"
+                      href="/about" 
+                      className="text-gray-700 hover:text-[#8CD1F0] transition-colors font-semibold py-3 text-xl"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       About
                     </Link>
                     <Link 
                       href="#how-it-works" 
-                      className="text-gray-700 hover:text-[#ff999a] transition-colors font-semibold py-3 text-xl"
+                      className="text-gray-700 hover:text-[#EB9190] transition-colors font-semibold py-3 text-xl"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       How It Works
                     </Link>
                     <Link 
-                      href="#contact" 
-                      className="text-gray-700 hover:text-[#9ebbff] transition-colors font-semibold py-3 text-xl"
+                      href="/contact" 
+                      className="text-gray-700 hover:text-[#8CD1F0] transition-colors font-semibold py-3 text-xl"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       Contact
@@ -207,66 +207,68 @@ export default function LandingPage() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
         {/* Layered Background */}
         <div className="absolute inset-0">
-          {/* Grey layer - covers from top to bottom of stats section */}
+          {/* Davy's gray layer - covers from top to bottom of stats section */}
           <div 
-            className={`absolute left-0 right-0 bg-gray-400 rounded-b-[100px] transition-transform duration-1000 ease-out ${
+            className={`absolute left-0 right-0 bg-[#d9d9d9] rounded-b-[100px] transition-transform duration-1000 ease-out ${
               layersAnimated ? 'translate-y-0' : '-translate-y-full'
             }`} 
             style={{ height: "100%" }}
           ></div>
           
-          {/* Blue layer - covers from top to end of stats section */}
+          {/* Baby blue layer - covers from top to end of stats section */}
           <div 
-            className={`absolute left-0 right-0 bg-[#9ebbff] rounded-b-[100px] transition-transform duration-1000 ease-out delay-200 ${
+            className={`absolute left-0 right-0 bg-[#8CD1F0] rounded-b-[100px] transition-transform duration-1000 ease-out delay-200 ${
               layersAnimated ? 'translate-y-0' : '-translate-y-full'
             }`} 
-            style={{ height: "90%" }}
+            style={{ height: "85%" }}
           ></div>
           
-          {/* Pink layer - covers from top to end of subtitle */}
+          {/* Coral layer - covers from top to end of subtitle */}
           <div 
-            className={`absolute left-0 right-0 bg-[#ff999a] rounded-b-[100px] transition-transform duration-1000 ease-out delay-500 ${
+            className={`absolute left-0 right-0 bg-[#FF999A] rounded-b-[100px] transition-transform duration-1000 ease-out delay-500 ${
               layersAnimated ? 'translate-y-0' : '-translate-y-full'
             }`} 
-            style={{ height: "80%" }}
+            style={{ height: "70%" }}
           ></div>
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Main Headline */}
-          <div className={`mb-12 transition-opacity duration-1000 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`mb-8 mt-0 transition-opacity duration-1000 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight">
               <div className="text-gray-900 mb-3">Play Games.</div>
-              <div className="bg-gradient-to-r from-[#ff999a] to-[#9ebbff] bg-clip-text text-transparent mb-3">
-                Raise Funds.
-              </div>
+              <div className="text-[#8CD1F0] mb-3">
+  Raise Funds.
+</div>
+
               <div className="text-gray-900">Drive Impact.</div>
             </h1>
           </div>
 
           {/* Subtitle */}
-          <p className={`text-xl sm:text-2xl lg:text-3xl text-gray-600 font-medium mb-20 max-w-4xl mx-auto leading-relaxed transition-opacity duration-1000 delay-300 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
-            A fundraising platform designed for nonprofits and powered by play.
-          </p>
+          <p className={`text-lg sm:text-xl lg:text-2xl text-gray-600 font-medium mb-6 max-w-4xl mx-auto leading-relaxed transition-opacity duration-1000 delay-300 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
+  A fundraising platform designed for nonprofits and powered by play.
+</p>
+
 
           {/* Stats Section */}
           <div className={`grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto transition-opacity duration-1000 delay-500 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className="text-center">
-              <div className="text-4xl font-black text-gray-600 mb-2">
-                $<AnimatedCounter target={2.5} suffix="M+" isActive={countersActive} duration={2500} />
+              <div className="text-5xl md:text-6xl font-black text-gray-600 mb-2">
+                $<AnimatedCounter target={100} suffix="K+" isActive={countersActive} duration={2500} />
               </div>
               <div className="text-gray-600 font-medium">Funds Raised</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-black text-gray-600 mb-2">
-                <AnimatedCounter target={500} suffix="+" isActive={countersActive} duration={2000} />
+              <div className="text-5xl md:text-6xl font-black text-gray-600 mb-2">
+                <AnimatedCounter target={25} suffix="+" isActive={countersActive} duration={2000} />
               </div>
               <div className="text-gray-600 font-medium">Campaigns Created</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-black text-gray-600 mb-2">
-                <AnimatedCounter target={50} suffix="K+" isActive={countersActive} duration={1800} />
+              <div className="text-5xl md:text-6xl font-black text-gray-600 mb-2">
+                <AnimatedCounter target={30} suffix="K+" isActive={countersActive} duration={1800} />
               </div>
               <div className="text-gray-600 font-medium">Players Engaged</div>
             </div>
@@ -275,7 +277,7 @@ export default function LandingPage() {
       </section>
 
       {/* White space after hero */}
-      <div className="h-16 bg-white"></div>
+      <div className="h-20 bg-white"></div>
 
       {/* Trusted Partners Section - Moved right after hero */}
       <TrustedPartners />
@@ -284,22 +286,22 @@ export default function LandingPage() {
       <HowItWorksCarousel />
 
       {/* Success Stories Section */}
-      <section className="py-24 px-6 md:px-12 relative overflow-hidden">
+      <section className="py-24 px-6 md:px-12 relative">
         {/* Background with overlapping card layers */}
         <div className="absolute inset-0">
           {/* Base background */}
-          <div className="absolute inset-0" style={{ backgroundColor: "#f8f9fb" }}></div>
+          <div className="absolute inset-0 bg-white"></div>
           
           {/* Overlapping background cards */}
           <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] -rotate-1 opacity-100"></div>
-          <div className="absolute top-12 left-8 right-8 bottom-12 bg-[#124559] rounded-[60px] rotate-1 opacity-100"></div>
-          <div className="absolute top-24 left-16 right-16 bottom-24 bg-[#eb9190] rounded-[60px] -rotate-1 opacity-100"></div>
-          <div className="absolute top-36 left-24 right-24 bottom-36 bg-white rounded-[60px] shadow-2xl"></div>
+          <div className="absolute top-12 left-8 right-8 bottom-8 bg-[#FF7073] rounded-[60px] rotate-1 opacity-100"></div>
+          <div className="absolute top-24 left-16 right-16 bottom-12 bg-[#FF999A] rounded-[60px] -rotate-1 opacity-100"></div>
+          <div className="absolute top-36 left-24 right-24 bottom-20 bg-white rounded-[60px] shadow-2xl"></div>
         </div>
 
         <div className="container mx-auto relative z-10">
           {/* Header */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
               Success Stories
             </h2>
@@ -309,10 +311,10 @@ export default function LandingPage() {
           </div>
 
           {/* Grid Container - Large left + 2 stacked right */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Large Story Card (Left) */}
             <div className="relative group cursor-pointer">
-              <div className="relative rounded-3xl overflow-hidden h-[500px] transition-all duration-300 group-hover:scale-105">
+              <div className="relative rounded-3xl overflow-hidden h-[400px] transition-all duration-300 group-hover:scale-105">
                 <Image
                   src="/placeholder.svg?height=500&width=600"
                   alt="Jurassic World Campaign"
@@ -326,10 +328,10 @@ export default function LandingPage() {
                       Jurassic World × Thropic
                     </h3>
                     <div className="space-y-3">
-                      <div className="text-2xl font-bold text-[#c7ff99]">
+                      <div className="text-2xl font-bold text-[#8CD1F0]">
                         $58k raised
                       </div>
-                      <div className="text-xl font-semibold text-[#ff999a]">
+                      <div className="text-xl font-semibold text-[#6BB6DD]">
                         +112% engagement increase
                       </div>
                     </div>
@@ -342,7 +344,7 @@ export default function LandingPage() {
             <div className="grid grid-rows-2 gap-8">
               {/* Card 2 (Top Right) */}
               <div className="relative group cursor-pointer">
-                <div className="relative rounded-3xl overflow-hidden h-[230px] transition-all duration-300 group-hover:scale-105">
+                <div className="relative rounded-3xl overflow-hidden h-[180px] transition-all duration-300 group-hover:scale-105">
                   <Image
                     src="/placeholder.svg?height=230&width=400"
                     alt="Food Bank Challenge"
@@ -356,10 +358,10 @@ export default function LandingPage() {
                         Local Food Bank Challenge
                       </h3>
                       <div className="space-y-2">
-                        <div className="text-lg font-bold text-[#9ebbff]">
+                        <div className="text-lg font-bold text-[#8CD1F0]">
                           $42k raised
                         </div>
-                        <div className="text-base font-semibold text-[#ff999a]">
+                        <div className="text-base font-semibold text-[#6BB6DD]">
                           +89% new donors
                         </div>
                       </div>
@@ -370,7 +372,7 @@ export default function LandingPage() {
 
               {/* Card 3 (Bottom Right) */}
               <div className="relative group cursor-pointer">
-                <div className="relative rounded-3xl overflow-hidden h-[230px] transition-all duration-300 group-hover:scale-105">
+                <div className="relative rounded-3xl overflow-hidden h-[180px] transition-all duration-300 group-hover:scale-105">
                   <Image
                     src="/placeholder.svg?height=230&width=400"
                     alt="Wildlife Conservation"
@@ -384,10 +386,10 @@ export default function LandingPage() {
                         Wildlife Conservation Game
                       </h3>
                       <div className="space-y-2">
-                        <div className="text-lg font-bold text-[#c7ff99]">
+                        <div className="text-lg font-bold text-[#8CD1F0]">
                           $73k raised
                         </div>
-                        <div className="text-base font-semibold text-[#ffe678]">
+                        <div className="text-base font-semibold text-[#6BB6DD]">
                           +156% reach increase
                         </div>
                       </div>
@@ -398,17 +400,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="text-center mt-20">
-            <button className="relative px-12 py-6 font-black text-xl text-gray-800 bg-[#ff999a] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#9ebbff] hover:scale-105">
-              <span className="relative z-10">See All Success Stories</span>
-              {/* Animated border effect */}
-              <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#ff999a] via-[#c7ff99] via-[#9ebbff] to-[#ffe678] animate-spin-slow"></div>
-                <div className="absolute inset-[2px] rounded-full bg-[#ff999a]"></div>
-              </div>
-            </button>
-          </div>
+
         </div>
 
         <style jsx>{`
@@ -431,18 +423,9 @@ export default function LandingPage() {
       <TestimonialSection />
 
       {/* Footer */}
-      <footer className="py-24 px-6 md:px-12 relative overflow-hidden">
-        {/* Background with overlapping card layers */}
-        <div className="absolute inset-0">
-          {/* Base background */}
-          <div className="absolute inset-0 bg-white"></div>
-          
-          {/* Overlapping background cards */}
-          <div className="absolute top-0 left-0 w-full h-full bg-[#ff999a] rounded-[60px] rotate-2 opacity-20"></div>
-          <div className="absolute top-12 left-8 right-8 bottom-12 bg-[#c7ff99] rounded-[60px] -rotate-1 opacity-25"></div>
-          <div className="absolute top-24 left-16 right-16 bottom-24 bg-[#9ebbff] rounded-[60px] rotate-1 opacity-30"></div>
-          <div className="absolute top-36 left-24 right-24 bottom-36 bg-white rounded-[60px] shadow-2xl"></div>
-        </div>
+      <footer className="py-24 px-6 md:px-12 relative">
+        {/* Background */}
+        <div className="absolute inset-0 bg-white"></div>
 
         <div className="container mx-auto relative z-10">
           {/* Header */}
@@ -459,28 +442,28 @@ export default function LandingPage() {
           {/* Main Content */}
           <div className="grid md:grid-cols-3 gap-12 mb-16">
             {/* Quick Links */}
-            <div className="relative group">
-              <div className="absolute -inset-2 bg-[#c7ff99] rounded-3xl rotate-2 opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-gray-300 shadow-lg">
+            <div className="relative">
+              <div className="absolute -inset-3 bg-[#FF7073] rounded-3xl rotate-2 opacity-15"></div>
+              <div className="relative bg-white rounded-3xl p-8 shadow-lg border border-gray-200 min-h-[300px] flex flex-col">
                 <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-6">Quick Links</h3>
                 <ul className="space-y-4">
                   <li>
-                    <Link href="#about" className="text-lg text-gray-600 hover:text-[#c7ff99] font-medium transition-colors duration-300">
+                    <Link href="/about" className="text-lg text-gray-600 hover:text-[#6DC5EE] font-medium transition-colors duration-300">
                       About
                     </Link>
                   </li>
                   <li>
-                    <Link href="#how-it-works" className="text-lg text-gray-600 hover:text-[#ff999a] font-medium transition-colors duration-300">
+                    <Link href="#how-it-works" className="text-lg text-gray-600 hover:text-[#FF7073] font-medium transition-colors duration-300">
                       How It Works
                     </Link>
                   </li>
                   <li>
-                    <Link href="#pricing" className="text-lg text-gray-600 hover:text-[#9ebbff] font-medium transition-colors duration-300">
+                    <Link href="#pricing" className="text-lg text-gray-600 hover:text-[#6DC5EE] font-medium transition-colors duration-300">
                       Pricing
                     </Link>
                   </li>
                   <li>
-                    <Link href="#support" className="text-lg text-gray-600 hover:text-[#ffe678] font-medium transition-colors duration-300">
+                    <Link href="#support" className="text-lg text-gray-600 hover:text-[#FF7073] font-medium transition-colors duration-300">
                       Support
                     </Link>
                   </li>
@@ -489,9 +472,9 @@ export default function LandingPage() {
             </div>
 
             {/* Contact */}
-            <div className="relative group">
-              <div className="absolute -inset-2 bg-[#ff999a] rounded-3xl -rotate-2 opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-gray-300 shadow-lg">
+            <div className="relative">
+              <div className="absolute -inset-3 bg-[#6DC5EE] rounded-3xl -rotate-1 opacity-15"></div>
+              <div className="relative bg-white rounded-3xl p-8 shadow-lg border border-gray-200 min-h-[300px] flex flex-col">
                 <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-6">Contact</h3>
                 <ul className="space-y-4 text-gray-600">
                   <li className="text-lg font-medium">kyle@thropicgames.com</li>
@@ -503,33 +486,33 @@ export default function LandingPage() {
             </div>
 
             {/* Social & CTA */}
-            <div className="relative group">
-              <div className="absolute -inset-2 bg-[#9ebbff] rounded-3xl rotate-1 opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-gray-300 shadow-lg">
+            <div className="relative">
+              <div className="absolute -inset-3 bg-[#FF7073] rounded-3xl rotate-1 opacity-15"></div>
+              <div className="relative bg-white rounded-3xl p-8 shadow-lg border border-gray-200 min-h-[300px] flex flex-col">
                 <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-6">Connect</h3>
                 
                 {/* Social Icons */}
-                <div className="flex space-x-6 mb-8">
-                  <Facebook className="h-8 w-8 text-gray-500 hover:text-[#c7ff99] cursor-pointer transition-colors duration-300" />
+                <div className="flex space-x-6 mb-auto">
+                  <Facebook className="h-8 w-8 text-gray-500 hover:text-[#6DC5EE] cursor-pointer transition-colors duration-300" />
                   {/* X (Twitter) Logo */}
-                  <svg className="h-8 w-8 text-gray-500 hover:text-[#ff999a] cursor-pointer transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-8 w-8 text-gray-500 hover:text-[#FF7073] cursor-pointer transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                   </svg>
-                  <Instagram className="h-8 w-8 text-gray-500 hover:text-[#9ebbff] cursor-pointer transition-colors duration-300" />
+                  <Instagram className="h-8 w-8 text-gray-500 hover:text-[#6DC5EE] cursor-pointer transition-colors duration-300" />
                   {/* TikTok Logo */}
-                  <svg className="h-8 w-8 text-gray-500 hover:text-[#ffe678] cursor-pointer transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-8 w-8 text-gray-500 hover:text-[#FF7073] cursor-pointer transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                   </svg>
-                  <Linkedin className="h-8 w-8 text-gray-500 hover:text-[#c7ff99] cursor-pointer transition-colors duration-300" />
+                  <Linkedin className="h-8 w-8 text-gray-500 hover:text-[#6DC5EE] cursor-pointer transition-colors duration-300" />
                 </div>
 
                 {/* CTA Button */}
-                <button className="relative w-full px-8 py-4 font-black text-lg text-gray-900 bg-[#c7ff99] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl hover:scale-105">
+                <button className="relative w-full px-8 py-4 font-black text-lg text-white bg-[#6DC5EE] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl hover:scale-105 mt-8">
                   <span className="relative z-10">Get Started</span>
                   {/* Animated border effect */}
                   <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#c7ff99] via-[#9ebbff] via-[#ff999a] to-[#ffe678] animate-spin-slow"></div>
-                    <div className="absolute inset-[2px] rounded-full bg-[#c7ff99]"></div>
+                    <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#6DC5EE] via-[#FF7073] to-[#6DC5EE] animate-spin-slow"></div>
+                    <div className="absolute inset-[2px] rounded-full bg-[#6DC5EE]"></div>
                   </div>
                 </button>
               </div>

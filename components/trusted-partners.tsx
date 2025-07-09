@@ -18,7 +18,7 @@ const partnerLogos = [
 
 export default function TrustedPartners() {
   return (
-    <section className="py-24 px-6 md:px-12 relative overflow-hidden">
+    <section className="pt-24 pb-40 px-6 md:px-12 relative">
       {/* Background with overlapping card layers */}
       <div className="absolute inset-0">
         {/* Base background */}
@@ -26,8 +26,8 @@ export default function TrustedPartners() {
         
         {/* Overlapping background cards */}
         <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] rotate-2 opacity-100"></div>
-        <div className="absolute top-12 left-8 right-8 bottom-12 bg-[#c7ff99] rounded-[60px] -rotate-1 opacity-100"></div>
-        <div className="absolute top-24 left-16 right-16 bottom-24 bg-[#ff999a] rounded-[60px] rotate-1 opacity-100"></div>
+        <div className="absolute top-12 left-8 right-8 bottom-12 bg-[#A4DBF4] rounded-[60px] -rotate-1 opacity-100"></div>
+        <div className="absolute top-24 left-16 right-16 bottom-24 bg-[#6DC5EE] rounded-[60px] rotate-1 opacity-100"></div>
         <div className="absolute top-36 left-24 right-24 bottom-36 bg-white rounded-[60px] shadow-2xl"></div>
       </div>
 
@@ -38,7 +38,7 @@ export default function TrustedPartners() {
             Trusted by leading nonprofits and partners
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Join hundreds of organizations already making an impact through gamified fundraising
+            Join organizations already making an impact through gamified fundraising
           </p>
         </div>
 
