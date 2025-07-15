@@ -6,14 +6,15 @@ import Image from "next/image"
 const partnerLogos = [
   { id: 1, src: "/images/logo1.jpg", alt: "Partner 1" },
   { id: 2, src: "/images/logo2.png", alt: "Partner 2" },
-  { id: 3, src: "/images/logo3.jpg", alt: "Partner 3" },
+  { id: 3, src: "/images/logo3.png", alt: "Partner 3" },
   { id: 4, src: "/images/logo4.png", alt: "Partner 4" },
   { id: 5, src: "/images/logo5.png", alt: "Partner 5" },
   { id: 6, src: "/images/logo6.png", alt: "Partner 6" },
   { id: 7, src: "/images/logo7.png", alt: "Partner 7" },
   { id: 8, src: "/images/logo8.png", alt: "Partner 8" },
   { id: 9, src: "/images/logo9.png", alt: "Partner 9" },
-  { id: 10, src: "/images/logo10.jpeg", alt: "Partner 10" },
+  { id: 10, src: "/images/logo10.png", alt: "Partner 10" },
+  { id: 11, src: "/images/logo11.png", alt: "Partner 11" },
 ]
 
 export default function TrustedPartners() {
@@ -25,25 +26,27 @@ export default function TrustedPartners() {
         <div className="absolute inset-0 bg-white"></div>
         
         {/* Overlapping background cards */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] rotate-2 opacity-100"></div>
+        {/* <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] rotate-2 opacity-100"></div> */}
         <div className="absolute top-12 left-8 right-8 bottom-12 bg-[#A4DBF4] rounded-[60px] -rotate-1 opacity-100"></div>
         <div className="absolute top-24 left-16 right-16 bottom-24 bg-[#6DC5EE] rounded-[60px] rotate-1 opacity-100"></div>
         <div className="absolute top-36 left-24 right-24 bottom-36 bg-white rounded-[60px] shadow-2xl"></div>
       </div>
 
       <div className="container mx-auto relative z-10">
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-            Trusted by leading nonprofits and partners
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Join organizations already making an impact through gamified fundraising
-          </p>
-        </div>
+        {/* Content inside white box */}
+        <div className="relative max-w-6xl mx-auto pt-16 pb-4">
+          {/* Heading inside white box */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+              Trusted by leading nonprofits and partners
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Join organizations already making an impact through gamified fundraising
+            </p>
+          </div>
 
-        {/* Single Rectangular Logo Carousel */}
-        <div className="mb-20 relative">
+          {/* Single Rectangular Logo Carousel */}
+          <div className="mb-20 relative">
           <div className="relative overflow-hidden">
             <div className="flex items-center gap-16 animate-scroll-fast">
               {/* First set of logos */}
@@ -77,9 +80,10 @@ export default function TrustedPartners() {
                 </div>
               ))}
             </div>
+                      </div>
           </div>
         </div>
-      </div>
+        </div>
 
       <style jsx>{`
         @keyframes scroll {

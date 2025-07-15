@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Facebook, Twitter, Instagram, Linkedin, Menu, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 
 // Animated Counter Component
 function AnimatedCounter({ 
@@ -43,6 +43,58 @@ function AnimatedCounter({
   }, [target, isActive, duration])
 
   return <>{count}{suffix}</>
+}
+
+// Video Auto-Play Component
+function AutoPlayVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Video is in view, play it
+            video.play().catch((error) => {
+              console.log("Auto-play failed:", error)
+            })
+          } else {
+            // Video is out of view, pause it
+            video.pause()
+          }
+        })
+      },
+      {
+        threshold: 0.5, // Play when 50% of video is visible
+      }
+    )
+
+    observer.observe(video)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  return (
+    <video
+      ref={videoRef}
+      className="w-full h-full object-cover"
+      controls
+      loop
+      playsInline
+      poster="/images/hero-background.png"
+      preload="metadata"
+    >
+      <source src="/videos/success_story.mp4" type="video/mp4" />
+      <source src="/videos/success_story.webm" type="video/webm" />
+      <source src="/videos/success_story.mov" type="video/quicktime" />
+      Your browser does not support the video tag.
+    </video>
+  )
 }
 import HowItWorksCarousel from "./components/how-it-works-carousel"
 import TrustedPartners from "./components/trusted-partners"
@@ -276,131 +328,45 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* White space after hero */}
-      <div className="h-20 bg-white"></div>
-
-      {/* Trusted Partners Section - Moved right after hero */}
-      <TrustedPartners />
+      {/* Reduced space after hero */}
+      <div className="h-2 bg-white"></div>
 
       {/* How It Works Section */}
       <HowItWorksCarousel />
 
+      {/* Trusted Partners Section */}
+      <TrustedPartners />
+
+      {/* Space between sections */}
+      <div className="h-32 bg-white"></div>
+
       {/* Success Stories Section */}
-      <section className="py-24 px-6 md:px-12 relative">
-        {/* Background with overlapping card layers */}
-        <div className="absolute inset-0">
-          {/* Base background */}
-          <div className="absolute inset-0 bg-white"></div>
-          
-          {/* Overlapping background cards */}
-          <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] -rotate-1 opacity-100"></div>
-          <div className="absolute top-12 left-8 right-8 bottom-8 bg-[#FF7073] rounded-[60px] rotate-1 opacity-100"></div>
-          <div className="absolute top-24 left-16 right-16 bottom-12 bg-[#FF999A] rounded-[60px] -rotate-1 opacity-100"></div>
-          <div className="absolute top-36 left-24 right-24 bottom-20 bg-white rounded-[60px] shadow-2xl"></div>
-        </div>
-
-        <div className="container mx-auto relative z-10">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
-              Success Stories
-            </h2>
-            <p className="text-2xl md:text-3xl text-gray-600 font-medium max-w-4xl mx-auto leading-relaxed">
-              Real campaigns making real impact through the power of gaming
-            </p>
-          </div>
-
-          {/* Grid Container - Large left + 2 stacked right */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Large Story Card (Left) */}
-            <div className="relative group cursor-pointer">
-              <div className="relative rounded-3xl overflow-hidden h-[400px] transition-all duration-300 group-hover:scale-105">
-                <Image
-                  src="/placeholder.svg?height=500&width=600"
-                  alt="Jurassic World Campaign"
-                  fill
-                  className="object-cover transition-transform duration-500"
-                />
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-center text-white p-8">
-                    <h3 className="text-3xl md:text-4xl font-black mb-6">
-                      Jurassic World × Thropic
-                    </h3>
-                    <div className="space-y-3">
-                      <div className="text-2xl font-bold text-[#8CD1F0]">
-                        $58k raised
-                      </div>
-                      <div className="text-xl font-semibold text-[#6BB6DD]">
-                        +112% engagement increase
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <section className="py-16 px-6 md:px-12">
+        <div className="container mx-auto">
+          {/* Content */}
+          <div className="max-w-4xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-12">
+              <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+                Real People, Real Results
+              </h2>
+              <p className="text-2xl md:text-3xl text-gray-600 font-medium max-w-4xl mx-auto leading-relaxed">
+                See how gaming transforms fundraising success
+              </p>
             </div>
 
-            {/* Right Column - 2 Stacked Cards */}
-            <div className="grid grid-rows-2 gap-8">
-              {/* Card 2 (Top Right) */}
-              <div className="relative group cursor-pointer">
-                <div className="relative rounded-3xl overflow-hidden h-[180px] transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/placeholder.svg?height=230&width=400"
-                    alt="Food Bank Challenge"
-                    fill
-                    className="object-cover transition-transform duration-500"
-                  />
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-center text-white p-6">
-                      <h3 className="text-xl md:text-2xl font-black mb-4">
-                        Local Food Bank Challenge
-                      </h3>
-                      <div className="space-y-2">
-                        <div className="text-lg font-bold text-[#8CD1F0]">
-                          $42k raised
-                        </div>
-                        <div className="text-base font-semibold text-[#6BB6DD]">
-                          +89% new donors
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3 (Bottom Right) */}
-              <div className="relative group cursor-pointer">
-                <div className="relative rounded-3xl overflow-hidden h-[180px] transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/placeholder.svg?height=230&width=400"
-                    alt="Wildlife Conservation"
-                    fill
-                    className="object-cover transition-transform duration-500"
-                  />
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-center text-white p-6">
-                      <h3 className="text-xl md:text-2xl font-black mb-4">
-                        Wildlife Conservation Game
-                      </h3>
-                      <div className="space-y-2">
-                        <div className="text-lg font-bold text-[#8CD1F0]">
-                          $73k raised
-                        </div>
-                        <div className="text-base font-semibold text-[#6BB6DD]">
-                          +156% reach increase
-                        </div>
-                      </div>
-                    </div>
+            {/* Single Story Container */}
+            <div className="max-w-2xl mx-auto">
+              <div className="relative group flex justify-center">
+                {/* Portrait container with proper aspect ratio - smaller size */}
+                <div className="relative w-full max-w-xs aspect-[9/16] rounded-3xl overflow-hidden bg-gradient-to-br from-[#8CD1F0] to-[#FF999A] p-1">
+                  <div className="relative w-full h-full rounded-3xl overflow-hidden bg-black">
+                    <AutoPlayVideo />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-
         </div>
 
         <style jsx>{`
@@ -458,13 +424,13 @@ export default function LandingPage() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="#pricing" className="text-lg text-gray-600 hover:text-[#6DC5EE] font-medium transition-colors duration-300">
-                      Pricing
+                    <Link href="#behind-the-vision" className="text-lg text-gray-600 hover:text-[#6DC5EE] font-medium transition-colors duration-300">
+                      Behind the Vision
                     </Link>
                   </li>
                   <li>
-                    <Link href="#support" className="text-lg text-gray-600 hover:text-[#FF7073] font-medium transition-colors duration-300">
-                      Support
+                    <Link href="#terms" className="text-lg text-gray-600 hover:text-[#FF7073] font-medium transition-colors duration-300">
+                      Terms and Conditions
                     </Link>
                   </li>
                 </ul>
@@ -477,10 +443,8 @@ export default function LandingPage() {
               <div className="relative bg-white rounded-3xl p-8 shadow-lg border border-gray-200 min-h-[300px] flex flex-col">
                 <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-6">Contact</h3>
                 <ul className="space-y-4 text-gray-600">
+                  <li className="text-lg font-medium">info@thropicgames.com</li>
                   <li className="text-lg font-medium">kyle@thropicgames.com</li>
-                  <li className="text-lg font-medium">1-800-THROPIC</li>
-                  <li className="text-lg font-medium">123 Innovation St</li>
-                  <li className="text-lg font-medium">Tech City, TC 12345</li>
                 </ul>
               </div>
             </div>

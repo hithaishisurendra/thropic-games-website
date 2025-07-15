@@ -64,22 +64,22 @@ export default function HowItWorksCarousel() {
         <section
       ref={sectionRef}
       id="how-it-works"
-      className="py-24 px-6 md:px-12"
+      className="py-16 px-6 md:px-12"
       style={{ backgroundColor: "white" }}
     >
         <div className="container mx-auto">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             How It Works
           </h2>
-          <p className="text-2xl md:text-3xl text-gray-600 font-medium max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 font-medium max-w-4xl mx-auto leading-relaxed">
             Three simple steps to turn gaming into fundraising success
           </p>
         </div>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 max-w-6xl mx-auto items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-5xl mx-auto items-stretch">
           {steps.map((step, index) => (
             <div
               key={step.id}
@@ -98,31 +98,35 @@ export default function HowItWorksCarousel() {
                 <div className="absolute -inset-1 bg-[#FF999A] rounded-3xl rotate-1 opacity-100 group-hover:rotate-2 transition-transform duration-300"></div>
                 
                 {/* Main card */}
-                <div className="relative bg-white rounded-3xl p-6 shadow-xl group-hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
-                  {/* Step Number and Emoji */}
-                  <div className="text-center mb-6">
-                    <div className="text-6xl mb-4">{step.emoji}</div>
-                    <h3 className="text-xl md:text-2xl font-black text-gray-900 mb-2">
-                      {step.stepNumber}
-                    </h3>
-                  </div>
-
-                  {/* Image */}
-                  <div className="flex justify-center mb-6">
+                <div className="relative bg-white rounded-3xl p-4 shadow-xl group-hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
+                  {/* Image - moved to top */}
+                  <div className="flex justify-center mb-4">
                     <div className="relative group-hover:scale-105 transition-transform duration-300">
                       <Image
                         src={step.image || "/placeholder.svg"}
                         alt={`${step.stepNumber} - ${step.title}`}
-                        width={200}
-                        height={400}
+                        width={150}
+                        height={300}
                         className="rounded-2xl shadow-lg"
                       />
                     </div>
                   </div>
 
-                  {/* Description */}
-                  <div className="text-center pb-4">
-                    <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium">
+                  {/* Icon (Emoji) */}
+                  <div className="text-center mb-3">
+                    <div className="text-4xl">{step.emoji}</div>
+                  </div>
+
+                  {/* Heading (Step Number) */}
+                  <div className="text-center mb-4">
+                    <h3 className="text-lg md:text-xl font-black text-gray-900">
+                      {step.stepNumber}
+                    </h3>
+                  </div>
+
+                  {/* Description - moved to bottom */}
+                  <div className="text-center pb-3">
+                    <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium">
                       {step.description}
                     </p>
                   </div>
@@ -133,8 +137,8 @@ export default function HowItWorksCarousel() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-20">
-          <button className="relative px-12 py-6 font-black text-xl text-gray-800 bg-[#8CD1F0] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl border-2 border-[#FF999A] hover:border-[#8CD1F0] hover:scale-105">
+        <div className="text-center mt-12">
+          <button className="relative px-8 py-4 font-black text-lg text-gray-800 bg-[#8CD1F0] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl border-2 border-[#FF999A] hover:border-[#8CD1F0] hover:scale-105">
             <span className="relative z-10">Get Started Today!</span>
             {/* Animated border effect */}
             <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">

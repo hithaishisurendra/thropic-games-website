@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Clock } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, Phone, Clock } from "lucide-react"
 
 export default function ContactPage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -83,6 +83,8 @@ export default function ContactPage() {
           </div>
 
           <div className="container mx-auto relative z-10">
+            {/* Content inside white box */}
+            <div className="px-8 md:px-16 py-16">
             {/* Header */}
             <div className="text-center mb-16">
               <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
@@ -118,7 +120,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-xl font-black text-gray-900 mb-2">Email Us</h3>
                       <p className="text-gray-600">kyle@thropicgames.com</p>
-                      <p className="text-gray-600">support@thropicgames.com</p>
+                      <p className="text-gray-600">info@thropicgames.com</p>
                     </div>
                   </div>
 
@@ -128,19 +130,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-black text-gray-900 mb-2">Call Us</h3>
-                      <p className="text-gray-600">1-800-THROPIC</p>
-                      <p className="text-gray-600">(1-800-847-6742)</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-[#FF7073] rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-black text-gray-900 mb-2">Visit Us</h3>
-                      <p className="text-gray-600">123 Innovation Street</p>
-                      <p className="text-gray-600">Tech City, TC 12345</p>
+                      <p className="text-gray-600">1800thropic</p>
                     </div>
                   </div>
 
@@ -256,6 +246,7 @@ export default function ContactPage() {
                         Send Message
                       </button>
                     </form>
+                  </div>
                   </div>
                 </div>
               </div>
