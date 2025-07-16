@@ -3,11 +3,216 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Mail, Phone, Clock } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, Phone, Clock, Menu, X } from "lucide-react"
+
+// Contact Form Component with Supabase Integration
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    subject: 'General Inquiry',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+    // Clear error status when user starts typing
+    if (submitStatus === 'error') {
+      setSubmitStatus('idle')
+      setErrorMessage('')
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+    setErrorMessage('')
+
+    try {
+      // Combine first and last name
+      const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`.trim()
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: fullName,
+          email: formData.email,
+          message: `Subject: ${formData.subject}\n\n${formData.message}`,
+          company: formData.company || null
+        }),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          company: '',
+          subject: 'General Inquiry',
+          message: ''
+        })
+      } else {
+        setSubmitStatus('error')
+        setErrorMessage(result.error || 'Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+      setErrorMessage('Network error. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <>
+      <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-8">
+        Send Us a Message
+      </h2>
+      
+      {/* Success Message */}
+      {submitStatus === 'success' && (
+        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+          <p className="text-green-800 font-semibold">✅ Thank you! Your message has been sent successfully. We'll get back to you soon.</p>
+        </div>
+      )}
+
+      {/* Error Message */}
+      {submitStatus === 'error' && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-red-800 font-semibold">❌ {errorMessage}</p>
+        </div>
+      )}
+      
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-2">First Name *</label>
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300"
+              placeholder="Your first name"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-2">Last Name *</label>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300"
+              placeholder="Your last name"
+            />
+          </div>
+        </div>
+        
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-2">Email *</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300"
+            placeholder="your.email@example.com"
+          />
+        </div>
+        
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-2">Organization</label>
+          <input
+            type="text"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300"
+            placeholder="Your organization name"
+          />
+        </div>
+        
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-2">Subject</label>
+          <select 
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300"
+          >
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Demo Request">Demo Request</option>
+            <option value="Partnership">Partnership</option>
+            <option value="Support">Support</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-2">Message *</label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            rows={5}
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300 resize-none"
+            placeholder="Tell us about your fundraising goals and how we can help..."
+          />
+        </div>
+        
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className={`w-full px-8 py-4 rounded-full font-black text-lg transition-all duration-300 hover:scale-105 ${
+            isSubmitting 
+              ? 'bg-gray-400 text-gray-600 cursor-not-allowed' 
+              : 'bg-[#A4DBF4] text-white hover:bg-[#8BC5E8]'
+          }`}
+        >
+          {isSubmitting ? 'Sending...' : 'Send Message'}
+        </button>
+      </form>
+    </>
+  )
+}
 
 export default function ContactPage() {
   const [isVisible, setIsVisible] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      setIsScrolled(scrollTop > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,40 +233,123 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 relative">
-                <Image
-                  src="/images/thropic-logo.png"
-                  alt="Thropic Games Logo"
-                  fill
-                  className="object-contain"
-                />
+      {/* Header */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+        isScrolled 
+          ? 'pt-6 px-6' 
+          : 'pt-0 px-0'
+      }`}>
+        <div className={`transition-all duration-500 ease-in-out ${
+          isScrolled 
+            ? 'bg-white/90 backdrop-blur-xl border border-[#d9d9d9] rounded-full shadow-xl mx-auto max-w-5xl' 
+            : 'bg-white/95 backdrop-blur-sm border-b border-[#d9d9d9]'
+        }`}>
+          <div className="container mx-auto px-8 sm:px-10 lg:px-16">
+            <div className={`flex items-center justify-between transition-all duration-500 ease-in-out ${
+              isScrolled ? 'h-16' : 'h-24'
+            }`}>
+              {/* Logo */}
+              <Link href="/" className="flex items-center space-x-4 group cursor-pointer">
+                <Image src="/images/thropic-logo.png" alt="Thropic Games" width={44} height={44} className="h-11 w-11 object-contain transition-all duration-300 ease-in-out group-hover:scale-110" />
+                <span className={`font-bold text-gray-900 transition-all duration-400 ease-in-out group-hover:text-[#8CD1F0] ${
+                  isScrolled ? 'text-xl' : 'text-2xl'
+                }`}>Thropic Games</span>
+              </Link>
+
+              {/* Centered CTA Button - Desktop */}
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
+                <Link href="/create-game">
+                  <button className={`relative font-bold text-white bg-[#EB9190] rounded-full overflow-hidden group transition-all duration-400 ease-in-out hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#8CD1F0] hover:scale-105 hover:-translate-y-0.5 ${
+                    isScrolled ? 'px-7 py-2.5 text-base' : 'px-10 py-4 text-lg'
+                  }`}>
+                    <span className="relative z-10 transition-all duration-200 ease-in-out">Create a Game</span>
+                    {/* Snake border animation */}
+                    <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-400 ease-in-out">
+                      <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#EB9190] via-[#8CD1F0] via-[#5B2E48] to-[#8CD1F0] animate-spin-slow"></div>
+                      <div className="absolute inset-[2px] rounded-full bg-[#EB9190]"></div>
+                    </div>
+                  </button>
+                </Link>
               </div>
-              <span className="text-2xl font-black text-gray-900">Thropic Games</span>
-            </Link>
 
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-[#A4DBF4] transition-all duration-300 font-semibold">
-                Home
-              </Link>
-              <Link href="/about" className="text-gray-700 hover:text-[#FF7073] transition-all duration-300 font-semibold">
-                About
-              </Link>
-              <Link href="/#how-it-works" className="text-gray-700 hover:text-[#A4DBF4] transition-all duration-300 font-semibold">
-                How It Works
-              </Link>
-              <Link href="/contact" className="text-[#FF7073] font-semibold">
-                Contact
-              </Link>
-            </nav>
+              {/* Navigation - Desktop */}
+              <nav className="hidden md:flex items-center space-x-10">
+                <Link href="/about" className={`text-gray-700 hover:text-[#FF7073] transition-all duration-300 ease-in-out font-semibold hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FF7073] after:transition-all after:duration-300 after:ease-in-out hover:after:w-full ${
+                  isScrolled ? 'text-base' : 'text-lg'
+                }`}>
+                  About
+                </Link>
+                <Link href="/#how-it-works" className={`text-gray-700 hover:text-[#EB9190] transition-all duration-300 ease-in-out font-semibold hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#EB9190] after:transition-all after:duration-300 after:ease-in-out hover:after:w-full ${
+                  isScrolled ? 'text-base' : 'text-lg'
+                }`}>
+                  How It Works
+                </Link>
+                <Link href="/contact" className={`text-[#FF7073] font-semibold hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#FF7073] transition-all duration-300 ease-in-out ${
+                  isScrolled ? 'text-base' : 'text-lg'
+                }`}>
+                  Contact
+                </Link>
+              </nav>
 
-            <Link href="/" className="bg-[#A4DBF4] text-white px-6 py-3 rounded-full font-bold hover:bg-[#8BC5E8] transition-all duration-300 hover:scale-105">
-              Get Started
-            </Link>
+              {/* Mobile menu button */}
+              <button 
+                className="md:hidden p-3 rounded-md text-gray-600 hover:text-[#ff999a] hover:bg-[#d9d9d9]/20 transition-all duration-300 ease-in-out hover:scale-110 hover:rotate-3"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-7 w-7 transition-transform duration-200 ease-in-out" />
+                ) : (
+                  <Menu className="h-7 w-7 transition-transform duration-200 ease-in-out" />
+                )}
+              </button>
+            </div>
+
+            {/* Mobile Navigation Menu */}
+            {isMobileMenuOpen && (
+              <div className="md:hidden border-t border-[#d9d9d9] mt-4 animate-in slide-in-from-top-4 duration-400 ease-in-out">
+                <div className="px-6 py-8 space-y-6">
+                  {/* Mobile CTA Button */}
+                  <div className="flex justify-center mb-8">
+                    <Link href="/create-game">
+                      <button className="relative px-8 py-4 font-black text-lg text-gray-800 bg-[#EB9190] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl border-2 border-[#8CD1F0] hover:border-[#EB9190] hover:scale-105"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span className="relative z-10">Create a Game</span>
+                        <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#EB9190] via-[#8CD1F0] via-[#5B2E48] to-[#8CD1F0] animate-spin-slow"></div>
+                          <div className="absolute inset-[2px] rounded-full bg-[#EB9190]"></div>
+                        </div>
+                      </button>
+                    </Link>
+                  </div>
+
+                  {/* Mobile Navigation Links */}
+                  <div className="space-y-4">
+                    <Link 
+                      href="/about" 
+                      className="text-gray-700 hover:text-[#FF7073] transition-all duration-300 ease-in-out font-semibold py-3 text-xl hover:scale-105 hover:translate-x-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      About
+                    </Link>
+                    <Link 
+                      href="/#how-it-works" 
+                      className="text-gray-700 hover:text-[#EB9190] transition-all duration-300 ease-in-out font-semibold py-3 text-xl hover:scale-105 hover:translate-x-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      How It Works
+                    </Link>
+                    <Link 
+                      href="/contact" 
+                      className="text-[#FF7073] transition-all duration-300 ease-in-out font-semibold py-3 text-xl hover:scale-105 hover:translate-x-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Contact
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </header>
@@ -119,7 +407,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-black text-gray-900 mb-2">Email Us</h3>
-                      <p className="text-gray-600">kyle@thropicgames.com</p>
+                      {/* <p className="text-gray-600">kyle@thropicgames.com</p> */}
                       <p className="text-gray-600">info@thropicgames.com</p>
                     </div>
                   </div>
@@ -130,7 +418,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-black text-gray-900 mb-2">Call Us</h3>
-                      <p className="text-gray-600">1800thropic</p>
+                      <p className="text-gray-600">1-800-thropic</p>
                     </div>
                   </div>
 
@@ -177,75 +465,7 @@ export default function ContactPage() {
                   
                   {/* Form container */}
                   <div className="relative bg-white p-8 rounded-3xl shadow-xl border border-gray-200">
-                    <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-8">
-                      Send Us a Message
-                    </h2>
-                    
-                    <form className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-bold text-gray-700 mb-2">First Name</label>
-                          <input
-                            type="text"
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300"
-                            placeholder="Your first name"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-bold text-gray-700 mb-2">Last Name</label>
-                          <input
-                            type="text"
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300"
-                            placeholder="Your last name"
-                          />
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
-                        <input
-                          type="email"
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300"
-                          placeholder="your.email@example.com"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2">Organization</label>
-                        <input
-                          type="text"
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300"
-                          placeholder="Your organization name"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2">Subject</label>
-                        <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300">
-                          <option>General Inquiry</option>
-                          <option>Demo Request</option>
-                          <option>Partnership</option>
-                          <option>Support</option>
-                          <option>Other</option>
-                        </select>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2">Message</label>
-                        <textarea
-                          rows={5}
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#A4DBF4] focus:border-transparent outline-none transition-all duration-300 resize-none"
-                          placeholder="Tell us about your fundraising goals and how we can help..."
-                        ></textarea>
-                      </div>
-                      
-                      <button
-                        type="submit"
-                        className="w-full bg-[#A4DBF4] text-white px-8 py-4 rounded-full font-black text-lg hover:bg-[#8BC5E8] transition-all duration-300 hover:scale-105"
-                      >
-                        Send Message
-                      </button>
-                    </form>
+                    <ContactForm />
                   </div>
                   </div>
                 </div>
@@ -284,6 +504,20 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
+
+      <style jsx>{`
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 3s linear infinite;
+        }
+      `}</style>
     </div>
   )
 } 

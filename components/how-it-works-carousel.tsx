@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 interface Step {
   id: number
@@ -99,7 +100,7 @@ export default function HowItWorksCarousel() {
                 
                 {/* Main card */}
                 <div className="relative bg-white rounded-3xl p-4 shadow-xl group-hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
-                  {/* Image - moved to top */}
+                  {/* Image - no white background around it */}
                   <div className="flex justify-center mb-4">
                     <div className="relative group-hover:scale-105 transition-transform duration-300">
                       <Image
@@ -107,7 +108,7 @@ export default function HowItWorksCarousel() {
                         alt={`${step.stepNumber} - ${step.title}`}
                         width={150}
                         height={300}
-                        className="rounded-2xl shadow-lg"
+                        className="rounded-2xl"
                       />
                     </div>
                   </div>
@@ -124,7 +125,7 @@ export default function HowItWorksCarousel() {
                     </h3>
                   </div>
 
-                  {/* Description - moved to bottom */}
+                  {/* Description */}
                   <div className="text-center pb-3">
                     <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium">
                       {step.description}
@@ -138,14 +139,16 @@ export default function HowItWorksCarousel() {
 
         {/* Call to Action */}
         <div className="text-center mt-12">
-          <button className="relative px-8 py-4 font-black text-lg text-gray-800 bg-[#8CD1F0] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl border-2 border-[#FF999A] hover:border-[#8CD1F0] hover:scale-105">
-            <span className="relative z-10">Get Started Today!</span>
-            {/* Animated border effect */}
-            <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#8CD1F0] via-[#FF999A] via-[#8CD1F0] to-[#FF999A] animate-spin-slow"></div>
-              <div className="absolute inset-[2px] rounded-full bg-[#8CD1F0]"></div>
-            </div>
-          </button>
+          <Link href="/create-game">
+            <button className="relative px-8 py-4 font-black text-lg text-gray-800 bg-[#8CD1F0] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl border-2 border-[#FF999A] hover:border-[#8CD1F0] hover:scale-105">
+              <span className="relative z-10">Get Started Today!</span>
+              {/* Animated border effect */}
+              <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#8CD1F0] via-[#FF999A] via-[#8CD1F0] to-[#FF999A] animate-spin-slow"></div>
+                <div className="absolute inset-[2px] rounded-full bg-[#8CD1F0]"></div>
+              </div>
+            </button>
+          </Link>
         </div>
       </div>
 

@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: 'Thropic Games - Gaming Fundraising Platform',
   description: 'A fundraising platform designed for nonprofits and powered by play.',
   generator: 'v0.dev',
+  icons: {
+    icon: '/images/thropic-logo.png',
+    shortcut: '/images/thropic-logo.png',
+    apple: '/images/thropic-logo.png',
+  },
 }
 
 export default function RootLayout({

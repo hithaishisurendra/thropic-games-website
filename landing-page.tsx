@@ -141,55 +141,57 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
         isScrolled 
           ? 'pt-6 px-6' 
           : 'pt-0 px-0'
       }`}>
-        <div className={`transition-all duration-700 ease-out ${
+        <div className={`transition-all duration-500 ease-in-out ${
           isScrolled 
-            ? 'bg-white/85 backdrop-blur-lg border border-[#d9d9d9] rounded-full shadow-xl mx-auto max-w-5xl' 
+            ? 'bg-white/90 backdrop-blur-xl border border-[#d9d9d9] rounded-full shadow-xl mx-auto max-w-5xl' 
             : 'bg-white/95 backdrop-blur-sm border-b border-[#d9d9d9]'
         }`}>
           <div className="container mx-auto px-8 sm:px-10 lg:px-16">
-            <div className={`flex items-center justify-between transition-all duration-700 ease-out ${
+            <div className={`flex items-center justify-between transition-all duration-500 ease-in-out ${
               isScrolled ? 'h-16' : 'h-24'
             }`}>
               {/* Logo */}
               <div className="flex items-center space-x-4">
-                <Image src="/images/thropic-logo.png" alt="Thropic Games" width={44} height={44} className="h-11 w-11" />
-                <span className={`font-bold text-gray-900 transition-all duration-500 ${
+                <Image src="/images/thropic-logo.png" alt="Thropic Games" width={44} height={44} className="h-11 w-11 object-contain transition-all duration-300 ease-in-out" />
+                <span className={`font-bold text-gray-900 transition-all duration-400 ease-in-out ${
                   isScrolled ? 'text-xl' : 'text-2xl'
                 }`}>Thropic Games</span>
               </div>
 
               {/* Centered CTA Button - Desktop */}
               <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
-                <button className={`relative font-bold text-white bg-[#EB9190] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#8CD1F0] hover:scale-105 ${
-                  isScrolled ? 'px-7 py-2.5 text-base' : 'px-10 py-4 text-lg'
-                }`}>
-                  <span className="relative z-10">Create a Game</span>
-                  {/* Snake border animation */}
-                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#EB9190] via-[#8CD1F0] via-[#5B2E48] to-[#8CD1F0] animate-spin-slow"></div>
-                    <div className="absolute inset-[2px] rounded-full bg-[#EB9190]"></div>
-                  </div>
-                </button>
+                <Link href="/create-game">
+                  <button className={`relative font-bold text-white bg-[#EB9190] rounded-full overflow-hidden group transition-all duration-400 ease-in-out hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#8CD1F0] hover:scale-105 hover:-translate-y-0.5 ${
+                    isScrolled ? 'px-7 py-2.5 text-base' : 'px-10 py-4 text-lg'
+                  }`}>
+                    <span className="relative z-10 transition-all duration-200 ease-in-out">Create a Game</span>
+                    {/* Snake border animation */}
+                    <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-400 ease-in-out">
+                      <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#EB9190] via-[#8CD1F0] via-[#5B2E48] to-[#8CD1F0] animate-spin-slow"></div>
+                      <div className="absolute inset-[2px] rounded-full bg-[#EB9190]"></div>
+                    </div>
+                  </button>
+                </Link>
               </div>
 
               {/* Navigation - Desktop */}
               <nav className="hidden md:flex items-center space-x-10">
-                <Link href="/about" className={`text-gray-700 hover:text-[#8CD1F0] transition-all duration-300 font-semibold hover:scale-105 ${
+                <Link href="/about" className={`text-gray-700 hover:text-[#8CD1F0] transition-all duration-300 ease-in-out font-semibold hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#8CD1F0] after:transition-all after:duration-300 after:ease-in-out hover:after:w-full ${
                   isScrolled ? 'text-base' : 'text-lg'
                 }`}>
                   About
                 </Link>
-                <Link href="#how-it-works" className={`text-gray-700 hover:text-[#EB9190] transition-all duration-300 font-semibold hover:scale-105 ${
+                <Link href="#how-it-works" className={`text-gray-700 hover:text-[#EB9190] transition-all duration-300 ease-in-out font-semibold hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#EB9190] after:transition-all after:duration-300 after:ease-in-out hover:after:w-full ${
                   isScrolled ? 'text-base' : 'text-lg'
                 }`}>
                   How It Works
                 </Link>
-                <Link href="/contact" className={`text-gray-700 hover:text-[#8CD1F0] transition-all duration-300 font-semibold hover:scale-105 ${
+                <Link href="/contact" className={`text-gray-700 hover:text-[#8CD1F0] transition-all duration-300 ease-in-out font-semibold hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#8CD1F0] after:transition-all after:duration-300 after:ease-in-out hover:after:w-full ${
                   isScrolled ? 'text-base' : 'text-lg'
                 }`}>
                   Contact
@@ -198,51 +200,53 @@ export default function LandingPage() {
 
               {/* Mobile menu button */}
               <button 
-                className="md:hidden p-3 rounded-md text-gray-600 hover:text-[#ff999a] hover:bg-[#d9d9d9]/20 transition-all duration-300"
+                className="md:hidden p-3 rounded-md text-gray-600 hover:text-[#ff999a] hover:bg-[#d9d9d9]/20 transition-all duration-300 ease-in-out hover:scale-110 hover:rotate-3"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? (
-                  <X className="h-7 w-7" />
+                  <X className="h-7 w-7 transition-transform duration-200 ease-in-out" />
                 ) : (
-                  <Menu className="h-7 w-7" />
+                  <Menu className="h-7 w-7 transition-transform duration-200 ease-in-out" />
                 )}
               </button>
             </div>
 
             {/* Mobile Navigation Menu */}
             {isMobileMenuOpen && (
-              <div className="md:hidden border-t border-[#d9d9d9] mt-4">
+              <div className="md:hidden border-t border-[#d9d9d9] mt-4 animate-in slide-in-from-top-4 duration-400 ease-in-out">
                 <div className="px-6 py-8 space-y-6">
                   {/* Mobile CTA Button */}
                   <div className="flex justify-center mb-8">
-                    <button className="relative px-10 py-4 font-bold text-white bg-[#EB9190] rounded-full overflow-hidden group transition-all duration-300 hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#8CD1F0] text-lg">
-                      <span className="relative z-10">Create a Game</span>
-                                              <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#EB9190] via-[#8CD1F0] via-[#5B2E48] to-[#8CD1F0] animate-spin-slow"></div>
-                          <div className="absolute inset-[2px] rounded-full bg-[#EB9190]"></div>
-                        </div>
-                    </button>
+                    <Link href="/create-game">
+                      <button className="relative px-10 py-4 font-bold text-white bg-[#EB9190] rounded-full overflow-hidden group transition-all duration-400 ease-in-out hover:shadow-xl border-2 border-[#d9d9d9] hover:border-[#8CD1F0] text-lg hover:scale-105 hover:-translate-y-0.5">
+                        <span className="relative z-10">Create a Game</span>
+                        <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-400 ease-in-out">
+                            <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#EB9190] via-[#8CD1F0] via-[#5B2E48] to-[#8CD1F0] animate-spin-slow"></div>
+                            <div className="absolute inset-[2px] rounded-full bg-[#EB9190]"></div>
+                          </div>
+                      </button>
+                    </Link>
                   </div>
                   
                   {/* Mobile Navigation Links */}
                   <div className="flex flex-col space-y-6 text-center">
                     <Link 
                       href="/about" 
-                      className="text-gray-700 hover:text-[#8CD1F0] transition-colors font-semibold py-3 text-xl"
+                      className="text-gray-700 hover:text-[#8CD1F0] transition-all duration-300 ease-in-out font-semibold py-3 text-xl hover:scale-105 hover:translate-x-2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       About
                     </Link>
                     <Link 
                       href="#how-it-works" 
-                      className="text-gray-700 hover:text-[#EB9190] transition-colors font-semibold py-3 text-xl"
+                      className="text-gray-700 hover:text-[#EB9190] transition-all duration-300 ease-in-out font-semibold py-3 text-xl hover:scale-105 hover:translate-x-2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       How It Works
                     </Link>
                     <Link 
                       href="/contact" 
-                      className="text-gray-700 hover:text-[#8CD1F0] transition-colors font-semibold py-3 text-xl"
+                      className="text-gray-700 hover:text-[#8CD1F0] transition-all duration-300 ease-in-out font-semibold py-3 text-xl hover:scale-105 hover:translate-x-2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       Contact
@@ -444,7 +448,7 @@ export default function LandingPage() {
                 <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-6">Contact</h3>
                 <ul className="space-y-4 text-gray-600">
                   <li className="text-lg font-medium">info@thropicgames.com</li>
-                  <li className="text-lg font-medium">kyle@thropicgames.com</li>
+                  {/* <li className="text-lg font-medium">kyle@thropicgames.com</li> */}
                 </ul>
               </div>
             </div>
@@ -471,14 +475,16 @@ export default function LandingPage() {
                 </div>
 
                 {/* CTA Button */}
-                <button className="relative w-full px-8 py-4 font-black text-lg text-white bg-[#6DC5EE] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl hover:scale-105 mt-8">
-                  <span className="relative z-10">Get Started</span>
-                  {/* Animated border effect */}
-                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#6DC5EE] via-[#FF7073] to-[#6DC5EE] animate-spin-slow"></div>
-                    <div className="absolute inset-[2px] rounded-full bg-[#6DC5EE]"></div>
-                  </div>
-                </button>
+                <Link href="/create-game">
+                  <button className="relative w-full px-8 py-4 font-black text-lg text-white bg-[#6DC5EE] rounded-full overflow-hidden group transition-all duration-500 hover:shadow-xl hover:scale-105 mt-8">
+                    <span className="relative z-10">Get Started</span>
+                    {/* Animated border effect */}
+                    <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 rounded-full border-2 bg-gradient-to-r from-[#6DC5EE] via-[#FF7073] to-[#6DC5EE] animate-spin-slow"></div>
+                      <div className="absolute inset-[2px] rounded-full bg-[#6DC5EE]"></div>
+                    </div>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
