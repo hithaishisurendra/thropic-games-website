@@ -561,7 +561,7 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-white"></div>
             
             {/* Overlapping background cards */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] -rotate-1 opacity-100"></div>
+            {/* <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] -rotate-1 opacity-100"></div> */}
             <div className="absolute top-12 left-8 right-8 bottom-12 bg-[#FF7073] rounded-[60px] rotate-1 opacity-100"></div>
             <div className="absolute top-24 left-16 right-16 bottom-24 bg-[#A4DBF4] rounded-[60px] -rotate-1 opacity-100"></div>
             <div className="absolute top-36 left-24 right-24 bottom-24 bg-white rounded-[60px] shadow-2xl"></div>
@@ -662,7 +662,7 @@ export default function AboutPage() {
           {/* Background with overlapping card layers */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-white"></div>
-            <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] rotate-1 opacity-100"></div>
+            {/* <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] rotate-1 opacity-100"></div> */}
             <div className="absolute top-12 left-8 right-8 bottom-8 bg-[#A4DBF4] rounded-[60px] -rotate-1 opacity-100"></div>
             <div className="absolute top-24 left-16 right-16 bottom-12 bg-[#FF7073] rounded-[60px] rotate-1 opacity-100"></div>
             <div className="absolute top-36 left-24 right-24 bottom-20 bg-white rounded-[60px] shadow-2xl"></div>
@@ -835,7 +835,7 @@ export default function AboutPage() {
           {/* Background with overlapping card layers */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-white"></div>
-            <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] rotate-1 opacity-100"></div>
+            {/* <div className="absolute top-0 left-0 w-full h-full bg-[#d9d9d9] rounded-[60px] rotate-1 opacity-100"></div> */}
             <div className="absolute top-12 left-8 right-8 bottom-8 bg-[#A4DBF4] rounded-[60px] -rotate-1 opacity-100"></div>
             <div className="absolute top-24 left-16 right-16 bottom-12 bg-[#FF7073] rounded-[60px] rotate-1 opacity-100"></div>
             <div className="absolute top-36 left-24 right-24 bottom-20 bg-white rounded-[60px] shadow-2xl"></div>
