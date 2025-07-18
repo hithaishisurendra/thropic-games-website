@@ -25,22 +25,22 @@ const articles: Article[] = [
     title: "A Data Point We Can't Unsee (and Keeps Going Up)",
     author: "Kyle Christensen",
     date: "March 21, 2025",
-    summary: "The $11.9 trillion generational wealth transfer is here, but younger donors expect interactive, engaging experiences. Learn how gaming strategies from Robinhood, TikTok, and Bitcoin can revolutionize nonprofit fundraising.",
+    summary: "The $11.9 trillion generational wealth transfer is here, but younger donors expect interactive, engaging experiences. Learn how gaming strategies from Robinhood, TikTok, and Bitcoin can revolutionize partner fundraising.",
     keyInsights: [
-      "$11.9 trillion wealth transfer to nonprofits over next decade",
+      "$11.9 trillion wealth transfer to organizations over next decade",
       "Generational shift from traditional to digital-first engagement",
       "Gaming tactics proven successful across finance, social media, and crypto",
-      "Strategic opportunity to modernize nonprofit fundraising"
+      "Strategic opportunity to modernize partner fundraising"
     ],
     fullContent: (
       <div className="space-y-6 text-gray-700 leading-relaxed">
         <p>
-          There's a data point that nonprofit leaders can't unsee once they hear it. And unfortunately, it keeps going up every year.
+          There's a data point that organization leaders can't unsee once they hear it. And unfortunately, it keeps going up every year.
         </p>
         
         <div className="bg-blue-50 border-l-4 border-blue-400 p-4 my-6">
           <p className="text-lg font-semibold text-blue-800">
-            $11.9 trillion will transfer to nonprofits over the next decade
+            $11.9 trillion will transfer to organizations over the next decade
           </p>
           <p className="text-blue-600 text-sm mt-1">
             Source: Philanthropic Forecasting Initiative
@@ -88,7 +88,7 @@ const articles: Article[] = [
           The pattern is clear: when you make participation interactive, social, and engaging, people don't just participate—they become advocates.
         </p>
 
-        <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">The Nonprofit Opportunity</h3>
+        <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">The Partner Opportunity</h3>
         
         <p>
           Traditional fundraising methods—galas, direct mail, phone calls—are becoming less effective with younger donors. They want to:
@@ -102,12 +102,12 @@ const articles: Article[] = [
         </ul>
 
         <p>
-          At Thropic Games, we're bringing these proven engagement strategies to nonprofit fundraising. Our charity challenges combine the excitement of prediction games with meaningful charitable giving, creating experiences that donors actually want to participate in and share.
+          At Thropic Games, we're bringing these proven engagement strategies to partner fundraising. Our charity challenges combine the excitement of prediction games with meaningful charitable giving, creating experiences that donors actually want to participate in and share.
         </p>
 
         <div className="bg-gradient-to-r from-pink-50 to-blue-50 p-6 rounded-lg border border-gray-200 mt-8">
           <p className="text-lg font-semibold text-gray-900 mb-3">
-            The Result? Nonprofits using our platform see:
+            The Result? Partners using our platform see:
           </p>
           <ul className="space-y-2">
             <li className="flex items-center"><span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>200%+ increase in donor engagement</li>
@@ -118,7 +118,7 @@ const articles: Article[] = [
         </div>
 
         <p className="mt-6">
-          The $11.9 trillion is coming. The question isn't whether nonprofits will receive this generational wealth transfer—it's which organizations will be ready to engage these donors in the ways they expect and deserve.
+          The $11.9 trillion is coming. The question isn't whether organizations will receive this generational wealth transfer—it's which partners will be ready to engage these donors in the ways they expect and deserve.
         </p>
 
         <p className="font-semibold text-gray-900">
@@ -344,7 +344,7 @@ const articles: Article[] = [
         <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Learn More</h3>
         
         <p>
-          If you're ready to explore how Thropic Games can help your nonprofit double donations and engage more donors, we'd love to hear from you. Our team is here to walk you through how our platform works, answer your questions, and help you get started. Reach out today to learn more about setting up your first charity challenge and join the growing community of nonprofits using Thropic Games to drive impact.
+          If you're ready to explore how Thropic Games can help your organization double donations and engage more donors, we'd love to hear from you. Our team is here to walk you through how our platform works, answer your questions, and help you get started. Reach out today to learn more about setting up your first charity challenge and join the growing community of partners using Thropic Games to drive impact.
         </p>
         
         <p className="font-semibold">
@@ -575,7 +575,7 @@ export default function AboutPage() {
                   Gaming for Good™
                 </h1>
                 <p className="text-2xl md:text-3xl text-gray-600 font-medium max-w-5xl mx-auto leading-relaxed mb-12">
-                  Building the future tools for nonprofits to grow their communities through the power of play.
+                  Building the future tools for partners to grow their communities through the power of play.
                 </p>
                 <a 
                   href="https://v0-thropicv1.vercel.app/" 
@@ -611,7 +611,7 @@ export default function AboutPage() {
                 >
                   <div className="space-y-8 text-lg text-gray-600 leading-relaxed">
                     <p className="text-xl">
-                      We help nonprofits attract and engage the next generation of donors by turning charitable giving 
+                      We help partners attract and engage the next generation of donors by turning charitable giving 
                       into interactive games during the biggest moments of the year.
                     </p>
                     <p>
@@ -769,7 +769,7 @@ export default function AboutPage() {
                   <div className="w-16 h-16 bg-[#A4DBF4] rounded-full flex items-center justify-center mb-6 mx-auto">
                     <Trophy className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-black text-gray-900 mb-4">The Creator</h3>
+                  <h3 className="text-xl font-black text-gray-900 mb-4">The Partner</h3>
                   <p className="text-gray-600 leading-relaxed">
                     Easy game creation tools with tax benefits and community engagement.
                   </p>

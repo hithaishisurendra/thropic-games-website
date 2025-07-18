@@ -8,16 +8,16 @@ interface SuccessStory {
   id: number
   title: string
   image: string
-  metrics: [string, string]
+  metrics: string[]
   buttonText: string
 }
 
 const successStories: SuccessStory[] = [
   {
     id: 1,
-    title: "Jurassic World × Thropic",
-    image: "/placeholder.svg?height=300&width=400",
-    metrics: ["+112% donor engagement", "$58k raised in 7 days"],
+    title: "Community Challenge Success",
+    image: "/images/success_story_img.png",
+    metrics: ["$5K+ in revenue", "816 players (names and emails)", "$6+ revenue per player"],
     buttonText: "See Details →",
   },
   {

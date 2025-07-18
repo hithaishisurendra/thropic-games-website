@@ -32,8 +32,7 @@ const organizationTypes = [
   { id: 'school', title: 'School/Educational', description: 'Schools, universities, educational programs', icon: School },
   { id: 'sports', title: 'Sports Team/Club', description: 'Athletic teams, sports clubs, leagues', icon: Trophy },
   { id: 'community', title: 'Community Group', description: 'Local groups, clubs, associations', icon: Users },
-  { id: 'religious', title: 'Religious Organization', description: 'Churches, temples, religious groups', icon: Home },
-  { id: 'healthcare', title: 'Healthcare/Medical', description: 'Hospitals, medical research, health causes', icon: Hospital }
+  { id: 'other', title: 'Other', description: 'Other types of organizations or groups', icon: Globe }
 ]
 
 const causeCategories = [
@@ -56,10 +55,10 @@ const gameTypes = [
 ]
 
 const audienceSizes = [
-  { id: 'small', title: '1-100 people', description: 'Small, intimate group', icon: User },
-  { id: 'medium', title: '100-500 people', description: 'Medium-sized community', icon: Users },
-  { id: 'large', title: '500-2,000 people', description: 'Large organization or network', icon: Globe },
-  { id: 'xlarge', title: '2,000+ people', description: 'Very large audience reach', icon: Zap }
+  { id: 'small', title: '1-1,000 people', description: 'Small, intimate group', icon: User },
+  { id: 'medium', title: '1,000-10,000 people', description: 'Medium-sized community', icon: Users },
+  { id: 'large', title: '10,000-50,000 people', description: 'Large organization or network', icon: Globe },
+  { id: 'xlarge', title: '50K+ people', description: 'Very large audience reach', icon: Zap }
 ]
 
 export default function CreateGamePage() {
@@ -277,10 +276,10 @@ export default function CreateGamePage() {
             <div className="space-y-10 animate-in fade-in duration-500">
               <div className="text-center">
                 <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                  What cause does your organization support?
+                  What type of game would your community love the most?
                 </h1>
                 <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                  This helps us understand your mission and create relevant content
+                  This helps us create the best experience for everyone!
                 </p>
               </div>
 
@@ -404,7 +403,7 @@ export default function CreateGamePage() {
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {['$1,000', '$5,000', '$10,000', '$25,000+'].map((goal) => (
+                {['$1k', '$10k', '$50k', 'a lot'].map((goal) => (
                   <button
                     key={goal}
                     onClick={() => updateFormData('fundraisingGoal', goal)}

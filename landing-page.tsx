@@ -5,45 +5,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Menu, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect, useCallback, useRef } from "react"
-
-// Animated Counter Component
-function AnimatedCounter({ 
-  target, 
-  suffix = "", 
-  isActive, 
-  duration = 2000 
-}: { 
-  target: number
-  suffix?: string
-  isActive: boolean
-  duration?: number
-}) {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    if (!isActive) return
-
-    let startTime: number | null = null
-    const animate = (currentTime: number) => {
-      if (startTime === null) startTime = currentTime
-      const progress = Math.min((currentTime - startTime) / duration, 1)
-      
-      // Easing function for smooth animation
-      const easeOut = 1 - Math.pow(1 - progress, 3)
-      setCount(Math.floor(target * easeOut))
-      
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      } else {
-        setCount(target)
-      }
-    }
-    
-    requestAnimationFrame(animate)
-  }, [target, isActive, duration])
-
-  return <>{count}{suffix}</>
-}
+import AnimatedCounter from "./components/ui/animated-counter"
 
 // Video Auto-Play Component
 function AutoPlayVideo() {
@@ -303,12 +265,13 @@ export default function LandingPage() {
           </div>
 
           {/* Subtitle */}
-          <p className={`text-lg sm:text-xl lg:text-2xl text-gray-600 font-medium mb-6 max-w-4xl mx-auto leading-relaxed transition-opacity duration-1000 delay-300 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <p className={`mt-20 text-xl sm:text-2xl lg:text-3xl text-gray-600 font-medium mb-6 max-w-4xl mx-auto leading-relaxed transition-opacity duration-1000 delay-300 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
   A fundraising platform designed for nonprofits and powered by play.
 </p>
 
 
-          {/* Stats Section */}
+
+          {/* Stats Section
           <div className={`grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto transition-opacity duration-1000 delay-500 ${textVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-black text-gray-600 mb-2">
@@ -328,7 +291,7 @@ export default function LandingPage() {
               </div>
               <div className="text-gray-600 font-medium">Players Engaged</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 

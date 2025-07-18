@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import AnimatedCounter from "../components/ui/animated-counter"
+import React from "react"
 
 export default function TestimonialSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -54,18 +56,17 @@ export default function TestimonialSection() {
               {/* Left Column - Image */}
               <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
                 <div className="relative group">
-                  {/* Decorative background layers */}
-                  <div className="absolute -inset-4 bg-[#6DC5EE] rounded-3xl rotate-3 opacity-40 group-hover:rotate-6 transition-transform duration-300"></div>
-                  <div className="absolute -inset-2 bg-[#FF7073] rounded-3xl -rotate-2 opacity-50 group-hover:-rotate-4 transition-transform duration-300"></div>
-                  
-                  {/* Image container */}
-                  <div className="relative bg-white p-3 rounded-3xl shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                  {/* Decorative background layers - tighter fit */}
+                  <div className="absolute -inset-1 bg-[#6DC5EE] rounded-2xl rotate-2 opacity-40 group-hover:rotate-3 transition-transform duration-300"></div>
+                  <div className="absolute -inset-0.5 bg-[#FF7073] rounded-2xl -rotate-1 opacity-50 group-hover:-rotate-2 transition-transform duration-300"></div>
+                  {/* Image container - minimal padding */}
+                  <div className="relative bg-white p-1 rounded-2xl shadow-xl group-hover:shadow-2xl transition-all duration-300">
                     <Image
-                      src="/placeholder.svg?height=300&width=240"
-                      alt="Karena Ries"
+                      src="/images/success_story_img.png"
+                      alt="Success Story"
                       width={240}
-                      height={300}
-                      className="rounded-2xl object-cover w-60 h-72"
+                      height={500}
+                      className="rounded-2xl object-cover w-60 h-120"
                     />
                   </div>
                 </div>
